@@ -69,17 +69,16 @@ if(n4 > 10){
 }
 */
 
-/*
+
 //5. Verifique se uma variável é do tipo booleano
 let n5;
 
 n5 = 'oi';
 boo = true;
 
-if(typeof n5 == typeof boo){
+if(typeof n5 == 'boolean'){
     console.log("A variável é do tipo booleano!");
 }else{
     console.log("A variável NÃO é do tipo booleano!");
     n5 = false;
 }
-*/

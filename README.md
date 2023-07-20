@@ -1,2 +1,2 @@
-# Softex-Logica
-Repositório para programar em JavaScript.
+# FAP-Softex
+Repositório da Formação Acelerada em Programação pela Softex Pernambuco.

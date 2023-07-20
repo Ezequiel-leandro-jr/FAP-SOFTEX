@@ -17,7 +17,8 @@ var nome = readline.question("Digite seu nome: ");
 
 const readline = require("readline-sync");
 
-/*//1. Verifique se o número é positivo
+/*
+//1. Verifique se o número é positivo
 let n1;
 
 n1 = readline.questionFloat('Digite um número: ');
@@ -51,7 +52,7 @@ n3 = readline.question("Escreva um nome: ");
 if(n3.length == 0){
     console.log('A string está VAZIA!')
 }else{
-    console.log('A string possui ', n3.length, ' caracteres!');
+    console.log('A string possui ', n3.length, ' caracteres! Que são: ', n3);
 }
 */
 
@@ -64,7 +65,7 @@ n4 = readline.questionFloat('Digite um número: ');
 if(n4 > 10){
     console.log("O número ", n4, " é MAIOR que 10!");
 }else{
-    console.log("O número ", n4, " é MENOR que 10!");
+    console.log("O número ", n4, " é MENOR que 10! ", n4, " x 2 = ", n4*2);
 }
 */
 
@@ -79,5 +80,6 @@ if(typeof n5 == typeof boo){
     console.log("A variável é do tipo booleano!");
 }else{
     console.log("A variável NÃO é do tipo booleano!");
+    n5 = false;
 }
 */

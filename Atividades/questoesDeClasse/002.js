@@ -1,29 +1,13 @@
-var minhaVar, soma, fazSol;
-var comida = [];
+var numero_inteiro = 5;
+var numero_float = 5.7;
+var texto = "este é um texto";
+var booleano = false;
 
-function divisao(n1,n2){
-    return n1 / n2 ;
-};
-
-minhaVar = 10;
-soma = 15 + 8;
-soma +=1;
-console.log(soma);
-soma *=3;
-console.log(soma);
-fazSol = true;
-comida = ['arroz', 'feijão', 'ovo'];
-console.log(comida[1]);
-console.log(soma === minhaVar);
-console.log(minhaVar <= soma);
-
-
-console.log(divisao(10,2));
-
-
-
-
-
-
-
-
+console.log("Este é um tipo:");
+console.log( typeof numero_inteiro);
+console.log("Este é um tipo:");
+console.log(typeof numero_float);
+console.log("Este é um tipo:");
+console.log(typeof texto);
+console.log("Este é um tipo:");
+console.log(typeof booleano);

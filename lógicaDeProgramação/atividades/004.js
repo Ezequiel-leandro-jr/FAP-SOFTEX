@@ -8,7 +8,7 @@ Baseado em IF, faça:
 */
 
 /* Como usar método para entrada de dados pelo node.js
-. $ npm install
+. $ npm install readline-sync
 --no código
 const readline = require("readline-sync");
 Exemplo de var:

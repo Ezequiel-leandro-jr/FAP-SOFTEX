@@ -7,7 +7,7 @@ Crie um programa que imprima somente os números múltiplos de 3, existente entr
 */
 
 for(let i = 3; i <= 100; i++){
-    if(i % 3 == 0){
+    if(i % 3 === 0){
         console.log(i," ");
     }
 }

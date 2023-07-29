@@ -9,7 +9,7 @@ do{
        } else if(num % 2 != 0){
              console.log("\nO valor é ímpar! Tente novamente.\n");
        } else {
-             console.log("\nCaractere inválido! Tente novamente.\n");
+             throw new Error("\nCaractere inválido! Tente novamente.\n");
         }
 
 } while(num % 2 != 0);

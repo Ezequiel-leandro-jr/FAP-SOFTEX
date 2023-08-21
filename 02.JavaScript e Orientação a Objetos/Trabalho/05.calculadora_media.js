@@ -23,6 +23,8 @@ console.log('================================\n\n');
 
 //chamada da função para calcular a média, atribuindo o retorno à variável media
 media = calc_media(nota1, nota2, nota3);
+//fazendo com que o valor decimal da variável média tenha apenas duas casas decimais
+media = parseFloat(media.toFixed(2));
 
 //impressão
 console.log('========== RESULTADO ==========');

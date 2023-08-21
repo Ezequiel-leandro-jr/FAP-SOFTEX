@@ -29,7 +29,8 @@ function calculadora(n1, op, n2) {
 }
 
 //variáveis globais
-let numero1, numero2, operador, continuar, resultado, resto;
+let numero1, numero2, operador, resultado, resto;
+let continuar = true;
 
 //módulo principal
 while(continuar) {
@@ -38,28 +39,28 @@ while(continuar) {
 
     console.log('\n===== CALCULADORA =====\n');
     numero1 = readline.questionFloat('Digite o 1° valor: ');
-    operador = readline.question('Operação:\n+ soma\n- subtração\n* multiplicação\n / divisão\n% resto da divisão\n** exponenciação\n: ');
-    numero2 = readline.questionFloat('Digite o 2° valor: ');
+    operador = readline.question('\n<<Operação>>\n\n+ Soma\n\n- Subtração\n\n* Multiplicação\n\n / Divisão\n\n% Resto da divisão\n\n** Exponenciação\n_____________\n=> ');
+    numero2 = readline.questionFloat('\nDigite o 2° valor: ');
 
     resultado = calculadora(numero1, operador, numero2);
 
     if(operador == '+'){
-        console.log(`\n${numero1} ${operador} ${numero2} = ${resultado}`);
-    } else if(op == '-') {
-        console.log(`\n${numero1} ${operador} ${numero2} = ${resultado}`);
-    } else if(op == '*') {
-        console.log(`\n${numero1} ${operador} ${numero2} = ${resultado}`);
-    } else if(op == '/') {
+        console.log(`\nResultado: ${numero1} ${operador} ${numero2} = ${resultado}`);
+    } else if(operador == '-') {
+        console.log(`\nResultado: ${numero1} ${operador} ${numero2} = ${resultado}`);
+    } else if(operador == '*') {
+        console.log(`\nResultado: ${numero1} ${operador} ${numero2} = ${resultado}`);
+    } else if(operador == '/') {
         if(numero1 % numero2 != 0) {
             resto = numero1 % numero2;
-            console.log(`\n${numero1} ${operador} ${numero2} = ${resultado} (resto: ${resto})`);
+            console.log(`\nResultado: ${numero1} ${operador} ${numero2} = ${resultado} (resto: ${resto})`);
         } else {
-            console.log(`\n${numero1} ${operador} ${numero2} = ${resultado}`);
+            console.log(`\nResultado: ${numero1} ${operador} ${numero2} = ${resultado}`);
         }
-    } else if(op == '**') {
-        console.log(`\n${numero1} ${operador} ${numero2} = ${resultado}`);
-    } else if(op == '%') {
-        console.log(`\n${numero1} ${operador} ${numero2} = ${resultado}`);
+    } else if(operador == '**') {
+        console.log(`\nResultado: ${numero1} ${operador} ${numero2} = ${resultado}`);
+    } else if(operador == '%') {
+        console.log(`\nResultado: ${numero1} ${operador} ${numero2} = ${resultado}`);
     } else {
         console.log(resultado);
     }

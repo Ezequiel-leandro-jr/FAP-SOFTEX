@@ -10,7 +10,7 @@ const readline = require('readline-sync');
 //criação das variáveis da questão, sem atribuição de valores
 let nome, salario, idade, diploma;
 
-//comandos para o cadastro da pessoa, respeitando o tipo de 
+//comandos para o cadastro da pessoa, respeitando o tipo da variável
 console.log("==========CADASTRO==========")
 
 nome = readline.question('\nNOME: ');

@@ -33,6 +33,9 @@ let numero1, numero2, operador, continuar, resultado, resto;
 
 //módulo principal
 while(continuar) {
+
+    operador = null;
+
     console.log('\n===== CALCULADORA =====\n');
     numero1 = readline.questionFloat('Digite o 1° valor: ');
     operador = readline.question('Operação:\n+ soma\n- subtração\n* multiplicação\n / divisão\n% resto da divisão\n** exponenciação\n: ');
@@ -61,6 +64,19 @@ while(continuar) {
         console.log(resultado);
     }
 
-
+    console.log('\n ');
+    
+    while(operador != 'sim' && operador != 'nao'){
+        operador = readline.question('Deseja realizar nova operação? <sim / nao>: ');
+        operador = operador.toLocaleLowerCase();
+        
+        if(operador == 'sim') {
+            continuar = true;
+        } else if(operador == 'nao') {
+            continuar = false;
+        } else {
+            console.log('\nResposta inválida! Tente novamente.\n')
+        }
+    }
     
 }

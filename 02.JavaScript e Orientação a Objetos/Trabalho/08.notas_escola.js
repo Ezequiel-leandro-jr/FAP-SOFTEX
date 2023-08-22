@@ -63,7 +63,7 @@ function nota_minima(soma) {
 //módulo principal
 console.log('\n\n====== ESCOLA SOFTEX ======\n');
 
-//comando de repetição para atribuir as 3 notas
+//comando de repetição para atribuir 2 de 3 notas
 for(let i = 0; i < notas.length - 1; i++) {
     notas[i] = readline.questionFloat(`NOTA ${i+1}: `);
     soma += notas[i];

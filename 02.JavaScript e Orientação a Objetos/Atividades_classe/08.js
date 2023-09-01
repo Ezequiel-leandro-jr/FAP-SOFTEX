@@ -12,15 +12,18 @@ const readline = require('readline-sync');
 const encanador = {
     valorDiaria: 30,
     diasTrabalhados: 0,
+    salarioBruto: 0,
     salarioLiquido: 0,
     descontoPorcento: 0.92
 };
 
 //função quantiaLiquida
-function quantiaLiquida(valorDiaria, diasTrabalhados, salarioLiquido, descontoPorcento) {
+function quantiaLiquida(valorDiaria, diasTrabalhados, salarioBruto, salarioLiquido, descontoPorcento) {
     console.log('=== SALÁRIO DO ENCANADOR ===');
 
     diasTrabalhados = readline.questionInt('\nQuantos dias foram trabalhados?\n=> ');
+    salarioBruto = valorDiaria * diasTrabalhados;
+    salarioBruto = parseFloat(salarioBruto.toFixed(2));
     salarioLiquido = (valorDiaria * diasTrabalhados) * descontoPorcento;
     salarioLiquido = parseFloat(salarioLiquido.toFixed(2));
 
@@ -28,6 +31,7 @@ function quantiaLiquida(valorDiaria, diasTrabalhados, salarioLiquido, descontoPo
 ---------------------------------
 VALOR DA DIÁRIA.......R$30.00
 DIAS TRABALHADOS......${diasTrabalhados}
+QUANTIA BRUTA.........R$${salarioBruto}
 DESCONTOS.............8%
 
 QUANTIA LÍQUIDA.......R$${salarioLiquido}
@@ -36,4 +40,4 @@ QUANTIA LÍQUIDA.......R$${salarioLiquido}
 };
 
 //módulo principal
-quantiaLiquida(encanador.valorDiaria, encanador.diasTrabalhados, encanador.salarioLiquido, encanador.descontoPorcento);
+quantiaLiquida(encanador.valorDiaria, encanador.diasTrabalhados, encanador.salarioBruto, encanador.salarioLiquido, encanador.descontoPorcento);

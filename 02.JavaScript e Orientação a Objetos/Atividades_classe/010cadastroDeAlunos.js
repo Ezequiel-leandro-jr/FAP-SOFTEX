@@ -16,10 +16,19 @@ const aluno2 = {
 
 //variáveis globais do sistema
 let loop = true;
-const alunos = [aluno1, aluno2];
+let alunos = [aluno1, aluno2];
 let gerador_matricula = 2;
 let soma = 0;
 let op;
+let matriculaBusca;
+let busca = false;
+let posicao = 0;
+let aluno_aux = {
+    matricula: null,
+    nome: "",
+    notas: [0, 0, 0],
+} ;
+
 
 //módulo principal
 while(loop) {
@@ -96,8 +105,8 @@ switch(opcao) {
     case 3:
         console.log('\nBuscando Aluno');
         console.log('--------------');
-        let matriculaBusca = readline.questionInt('\nDigite o n° de matrícula: ');
-        let busca = false;
+        matriculaBusca = readline.questionInt('\nDigite o n° de matrícula: ');
+        busca = false;
         
         for(const aluno of alunos) {
             if(aluno.matricula === matriculaBusca) {
@@ -126,14 +135,16 @@ switch(opcao) {
         break;
 
     case 4:
-        console.log('\nAlterando Aluno');
+        console.log('\nAlterando Cadastro');
         console.log('--------------');
-        let alt = readline.questionInt('\nDigite o n° de matrícula: ');
-        let b = false;
+        matriculaBusca = readline.questionInt('\nDigite o n° de matrícula: ');
         
         for(const aluno of alunos) {
-            if(aluno.matricula === alt) {
-                console.log('\nCadastro do aluno');
+            if(aluno.matricula === matriculaBusca) {
+                posicao = alunos.indexOf(aluno);
+                aluno_aux = alunos[posicao];
+
+                console.log('\nCadastro do Aluno');
                 console.log('------------------');
                 console.log(`Matrícula: ${aluno.matricula}`);
                 console.log(`Nome: ${aluno.nome}`);
@@ -142,112 +153,124 @@ switch(opcao) {
                     soma += aluno.notas[n];
                 }
                 console.log(`Média: ${soma/3}`);
-                console.log('________________\n');
+                console.log('');
+                readline.keyInPause();
                 soma = 0;
-                b = true;
 
                 do{
                     op = readline.questionInt(`
-                    
-O que deseja alterar?
----------------------
-0. Nome
-1. Nota 1
-2. Nota 2
-3. Nota 3
-4. Sair
-____________________
-n°: `);
-                    switch(op) {
-                        case 0:
-                            nomeAlunoAlt = readline.question('\nDigite o nome do aluno: ');
-                            aluno.nome = nomeAlunoAlt;
-                            console.log('\n________________________________');
-                            console.log('Alteração realizada com sucesso.');
-                            console.log('----------------------------------');
-                            console.log(`Matrícula: ${aluno.matricula}`);
-                            console.log(`Nome: ${aluno.nome}`);
-                            for(let n = 0; n < aluno.notas.length; n++) {
-                                console.log(`\tNota ${++n}: ${aluno.notas[--n]}`);
-                                soma += aluno.notas[n];
-                            }
-                            console.log(`Média: ${soma/3}`);
-                            console.log('________________\n');
-                            soma = 0;
-                            op = 4;
-                            break;
-                        
-                        case 1:
-                            aluno.notas[0] = readline.questionFloat('\nDigite a 1° nota: ');
-                            console.log('\n________________________________');
-                            console.log('Alteração realizada com sucesso.');
-                            console.log('----------------------------------');
-                            console.log(`Matrícula: ${aluno.matricula}`);
-                            console.log(`Nome: ${aluno.nome}`);
-                            for(let n = 0; n < aluno.notas.length; n++) {
-                                console.log(`\tNota ${++n}: ${aluno.notas[--n]}`);
-                                soma += aluno.notas[n];
-                            }
-                            console.log(`Média: ${soma/3}`);
-                            console.log('________________\n');
-                            soma = 0;
-                            op = 4;
-                            break;
-
-                        case 2:
-                            aluno.notas[1] = readline.questionFloat('\nDigite a 2° nota: ');
-                            console.log('\n________________________________');
-                            console.log('Alteração realizada com sucesso.');
-                            console.log('----------------------------------');
-                            console.log(`Matrícula: ${aluno.matricula}`);
-                            console.log(`Nome: ${aluno.nome}`);
-                            for(let n = 0; n < aluno.notas.length; n++) {
-                                console.log(`\tNota ${++n}: ${aluno.notas[--n]}`);
-                                soma += aluno.notas[n];
-                            }
-                            console.log(`Média: ${soma/3}`);
-                            console.log('________________\n');
-                            soma = 0;
-                            op = 4;
-                            break;
-                        
-                        case 3:
-                            aluno.notas[2] = readline.questionFloat('\nDigite a 3° nota: ');
-                            console.log('\n________________________________');
-                            console.log('Alteração realizada com sucesso.');
-                            console.log('----------------------------------');
-                            console.log(`Matrícula: ${aluno.matricula}`);
-                            console.log(`Nome: ${aluno.nome}`);
-                            for(let n = 0; n < aluno.notas.length; n++) {
-                                console.log(`\tNota ${++n}: ${aluno.notas[--n]}`);
-                                soma += aluno.notas[n];
-                            }
-                            console.log(`Média: ${soma/3}`);
-                            console.log('________________\n');
-                            soma = 0;
-                            op = 4;
-                            break;
-                        
-                            case 4:
-                                break;
                             
-                            default:
-                                console.log('\nOpção incorreta. Tente novamente.');
-                                break;
-                    }
-
-            }while(op !== 4);
-                readline.keyInPause();
+        O que deseja alterar?
+        ---------------------
+        0. Nome
+        1. Nota 1
+        2. Nota 2
+        3. Nota 3
+        4. Sair
+        ____________________
+        n°: `);
+                            switch(op) {
+                                case 0:
+                                    nomeAlunoAlt = readline.question('\nDigite o nome do aluno: ');
+                                    aluno_aux.nome = nomeAlunoAlt;
+                                    console.log('\n________________________________');
+                                    console.log('Alteração realizada com sucesso.');
+                                    console.log('----------------------------------');
+                                    console.log(`Matrícula: ${aluno_aux.matricula}`);
+                                    console.log(`Nome: ${aluno_aux.nome}`);
+                                    for(let n = 0; n < aluno_aux.notas.length; n++) {
+                                        console.log(`\tNota ${++n}: ${aluno_aux.notas[--n]}`);
+                                        soma += aluno_aux.notas[n];
+                                    }
+                                    console.log(`Média: ${soma/3}`);
+                                    console.log('________________\n');
+                                    soma = 0;
+                                    op = 4;
+        
+                                    alunos[posicao] = aluno_aux;
+                                    break;
+                                
+                                case 1:
+                                    aluno_aux.notas[0] = readline.questionFloat('\nDigite a 1° nota: ');
+                                    console.log('\n________________________________');
+                                    console.log('Alteração realizada com sucesso.');
+                                    console.log('----------------------------------');
+                                    console.log(`Matrícula: ${aluno_aux.matricula}`);
+                                    console.log(`Nome: ${aluno_aux.nome}`);
+                                    for(let n = 0; n < aluno_aux.notas.length; n++) {
+                                        console.log(`\tNota ${++n}: ${aluno_aux.notas[--n]}`);
+                                        soma += aluno_aux.notas[n];
+                                    }
+                                    console.log(`Média: ${soma/3}`);
+                                    console.log('________________\n');
+                                    soma = 0;
+                                    op = 4;
+        
+                                    alunos[posicao] = aluno_aux;
+                                    break;
+        
+                                case 2:
+                                    aluno_aux.notas[1] = readline.questionFloat('\nDigite a 1° nota: ');
+                                    console.log('\n________________________________');
+                                    console.log('Alteração realizada com sucesso.');
+                                    console.log('----------------------------------');
+                                    console.log(`Matrícula: ${aluno_aux.matricula}`);
+                                    console.log(`Nome: ${aluno_aux.nome}`);
+                                    for(let n = 0; n < aluno_aux.notas.length; n++) {
+                                        console.log(`\tNota ${++n}: ${aluno_aux.notas[--n]}`);
+                                        soma += aluno_aux.notas[n];
+                                    }
+                                    console.log(`Média: ${soma/3}`);
+                                    console.log('________________\n');
+                                    soma = 0;
+                                    op = 4;
+        
+                                    alunos[posicao] = aluno_aux;
+                                    break;
+                                case 3:
+                                    aluno_aux.notas[2] = readline.questionFloat('\nDigite a 3° nota: ');
+                                    console.log('\n________________________________');
+                                    console.log('Alteração realizada com sucesso.');
+                                    console.log('----------------------------------');
+                                    console.log(`Matrícula: ${aluno_aux.matricula}`);
+                                    console.log(`Nome: ${aluno_aux.nome}`);
+                                    for(let n = 0; n < aluno_aux.notas.length; n++) {
+                                        console.log(`\tNota ${++n}: ${aluno_aux.notas[--n]}`);
+                                        soma += aluno_aux.notas[n];
+                                    }
+                                    console.log(`Média: ${soma/3}`);
+                                    console.log('________________\n');
+                                    soma = 0;
+                                    op = 4;
+        
+                                    alunos[posicao] = aluno_aux;
+                                    break;
+                                
+                                    case 4:
+                                        break;
+                                    
+                                    default:
+                                        console.log('\nOpção incorreta. Tente novamente.');
+                                        break;
+                            }
+                        
+                    }while(op !== 4);
+                
+                busca = true;
+                break;
+            }
         }
 
-        if(b == false) {
+        if(busca == false) {
             console.log('\nAluno não encontrado!\n');
-            console.log('');
-            readline.keyInPause();
+            console.keyInPause();
         }
+
         break;
 
-    }
-}
+    case 5:
+            
+                
+        }
 
-}
+    }

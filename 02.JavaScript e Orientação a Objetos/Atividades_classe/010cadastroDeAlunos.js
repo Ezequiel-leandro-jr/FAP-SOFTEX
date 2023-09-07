@@ -53,7 +53,7 @@ switch(opcao) {
         break;
 
     case 1:
-        console.log('Listando todos os alunos');
+        console.log('\n\nListando todos os alunos');
         console.log('------------------------\n');
 
         for(let a of alunos) {

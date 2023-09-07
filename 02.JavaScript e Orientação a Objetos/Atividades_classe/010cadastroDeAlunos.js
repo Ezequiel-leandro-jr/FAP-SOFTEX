@@ -23,6 +23,7 @@ let op;
 let matriculaBusca;
 let busca = false;
 let posicao = 0;
+let del;
 let aluno_aux = {
     matricula: null,
     nome: "",
@@ -269,8 +270,52 @@ switch(opcao) {
         break;
 
     case 5:
-            
-                
-        }
+        console.log('\nRemovendo Cadastro');
+        console.log('--------------------');
+        matriculaBusca = readline.questionInt('\nDigite o n° de matrícula: ');
+        busca = false;
+        
+        for(const aluno of alunos) {
+            if(aluno.matricula === matriculaBusca) {
+                posicao = alunos.indexOf(aluno);
+                busca = true;
 
+                console.log('\nCadastro do Aluno');
+                console.log('------------------');
+                console.log(`Matrícula: ${aluno.matricula}`);
+                console.log(`Nome: ${aluno.nome}`);
+                for(let n = 0; n < aluno.notas.length; n++) {
+                    console.log(`\tNota ${++n}: ${aluno.notas[--n]}`);
+                    soma += aluno.notas[n];
+                }
+                console.log(`Média: ${soma/3}`);
+                console.log('--------------------')
+                console.log('');
+                soma = 0; 
+
+                while(del !== 'sim' && del !== 'nao') {
+                    del = readline.question('\nDeseja remover <sim / nao>? => ');
+                    del = del.toLowerCase();
+                    if(del == 'sim') {
+                        alunos.splice(posicao, 1);
+                        console.log('\nRemoção concluída!\n');
+                   } else if(del == 'nao') {
+                      console.log('\nRemoção cancelada.');
+                   } else {
+                      console.log('\nOpção inválida. Tente novamente.');
+                   }
+                }
+                   
+        }
     }
+
+    if(busca == false) {
+        console.log('\nAluno não encontrado!\n');
+    }
+
+    del = 'del';
+    readline.keyInPause();
+
+    break;
+}
+}

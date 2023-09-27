@@ -125,7 +125,7 @@ class ventilador {
     constructor() {
         this.ligado = false,
         this.limpo = false,
-        this.quebrado = true;
+        this.quebrado = true
     }
 
     get getLimpo() {
@@ -213,7 +213,7 @@ class aluno {
         matricula: null;
         notas: null;
         media: null;
-        aprovado: null;
+        aprovado: null
     }
 
     set setNome(nome) {
@@ -295,11 +295,116 @@ if(aluno1.getAprovado === true) {
     console.log(`SITUACAO: REPROVADO`);  
 }
 console.log('------------------------------------');
-readline.question('\t<enter para continuar...>', {hideEchoBack: true, mask: ''});
+readline.question('\t<enter para sair do sistema...>', {hideEchoBack: true, mask: ''});
 
 
 
-//4° classe: cliente
+//4° classe: funcionário
+class funcionario {
+    constructor(nomeFuncionario, idade, id, cargo, departamento, salario, tempoDeServico) {
+        nomeFuncionario: nomeFuncionario;
+        idade: idade;
+        id: id;
+        cargo: cargo;
+        departamento: departamento;
+        salario: salario;
+        tempoDeServico: tempoDeServico;
+    }
+
+    set setNomeFuncionario(nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
+    }
+
+    set setIdade(idade) {
+        this.idade = idade;
+    }
+
+    set setId(id) {
+        this.id = id;
+    }
+
+    set setCargo(cargo) {
+        this.cargo = cargo;
+    }
+
+    set setDepartamento(departamento) {
+        this.departamento = departamento;
+    }
+
+    set setSalario(salario) {
+        this.salario = salario;
+    }
+
+    set setTempoDeServico(tempoDeServico) {
+        this.tempoDeServico = tempoDeServico;
+    }
+
+    get getNomeFuncionario() {
+        return this.nomeFuncionario;
+    }
+
+    get getIdade() {
+        return this.idade;
+    }
+
+    get getId() {
+        return this.id;
+    }
+
+    get getCargo() {
+        return this.cargo;
+    }
+
+    get getDepartamento() {
+        return this.departamento;
+    }
+
+    get getSalario() {
+        return this.salario;
+    }
+
+    get getTempoDeServico() {
+        return this.tempoDeServico;
+    }
+}
+
+//instanciamento e interacao com o objeto derivado da classe funcionario
+let funcionario1 = new funcionario();
+
+console.clear();
+console.log('CADASTRO DE FUNCIONARIO\n\n');
+funcionario1.setNomeFuncionario = readline.question('NOME COMPLETO: ');
+funcionario1.setNomeFuncionario = funcionario1.getNomeFuncionario.toUpperCase();
+funcionario1.setIdade = readline.questionInt('IDADE: ');
+funcionario1.setId = readline.question('ID: ');
+funcionario1.setCargo = readline.question('CARGO: ');
+funcionario1.setDepartamento = readline.question('DEPARTAMENTO: ');
+funcionario1.setSalario = readline.questionFloat('SALARIO (R$): ');
+funcionario1.setSalario = parseFloat(funcionario1.getSalario.toFixed(2));
+funcionario1.setTempoDeServico = readline.questionInt('TEMPO DE SERVICO (em meses): ');
+
+console.clear();
+console.log(`
+            cadastro realizado com sucesso!
+
+${funcionario1.getNomeFuncionario}   ${funcionario1.getId}
+----------------------------------------------------------
+IDADE:              ${funcionario1.getIdade} anos
+__________________________________________________________
+CARGO:              ${funcionario1.getCargo}
+__________________________________________________________
+DEPARTAMENTO:       ${funcionario1.getDepartamento}
+__________________________________________________________
+SALARIO:            R$${funcionario1.getSalario}
+__________________________________________________________
+TEMPO DE SERVICO:   ${funcionario1.getTempoDeServico} meses
+__________________________________________________________
+
+
+`);
+
+readline.question('\t<enter para sair do sistema...>', {hideEchoBack: true, mask: ''});
+
 
 
 
